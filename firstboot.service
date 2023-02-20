@@ -1,0 +1,17 @@
+[Unit]
+Description=First Boot Wizard
+Documentation=man:systemd-firstboot(1)
+DefaultDependencies=no
+Conflicts=shutdown.target
+After=systemd-remount-fs.service
+Before=systemd-sysusers.service sysinit.target shutdown.target
+ConditionPathIsReadWrite=/etc
+ConditionFirstBoot=yes
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/root/firstboot.sh 
+
+[Install]
+WantedBy=sysinit.target
