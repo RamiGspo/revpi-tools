@@ -5,6 +5,7 @@ Conflicts=shutdown.target
 After=systemd-remount-fs.service
 ConditionPathIsReadWrite=/etc
 ConditionFirstBoot=yes
+ConditionKernelVersion>5.10
 
 [Service]
 Type=oneshot
